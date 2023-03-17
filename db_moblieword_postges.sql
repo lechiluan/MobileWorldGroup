@@ -56,28 +56,6 @@ INSERT INTO feedback (Username, email, message) VALUES
 ('admin', 'asssdadadasdwqdwdwq', 'wqewqeqwewqewqhudvuvdlhduyahdiusahdiuashduisahdiusad'),
 ('ngoctien', 'qwq', 'eewqeeee');
 
-
-CREATE TABLE orderdetail (
-  OrderID int NOT NULL,
-  Product_ID varchar(10) NOT NULL,
-  price bigint NOT NULL,
-  qty int NOT NULL,
-  unitprice bigint NOT NULL,
-	PRIMARY KEY (OrderID,Product_ID),
-	FOREIGN KEY (OrderID) REFERENCES orders (OrderID),
-	FOREIGN KEY (Product_ID) REFERENCES product (Product_ID)
-) ;
-
-CREATE TABLE orders (
-  OrderID BIGSERIAL NOT NULL,
-  OrderDate timestamp(0) NOT NULL,
-  DeliveryDate timestamp(0) NOT NULL,
-  Delivery_loca varchar(200) NOT NULL,
-  Username varchar(20) NOT NULL,
-  PRIMARY KEY (OrderID),
-	FOREIGN KEY (Username) REFERENCES customer (Username)
-) ;
-
 CREATE TABLE product (
   Product_ID varchar(10) NOT NULL,
   Product_Name varchar(30) NOT NULL,
@@ -108,4 +86,25 @@ INSERT INTO product (Product_ID, Product_Name, Price, oldPrice, SmallDesc, Detai
 ('W03', 'Oppo Watch', 399, 450, 'Operating system: watchOS 7.0', '<h3 and="" color:="" dejavu="" delicate="" font="" font-size:="" liberation="" luxurious="" outline:="" overflow:="" p="" style="margin: 10px 0px; padding: 0px; margin-block: 0px; text-rendering: geometricprecision; color: rgb(51, 51, 51); font-family: Helvetica, Arial, " zoom:="">rn	<font style="margin: 0px; padding: 0px; vertical-align: inherit;">Smart watch&nbsp;&nbsp;</font><a href="https://www.thegioididong.com/tim-kiem?key=oppo+watch" style="margin: 0px; padding: 0px; text-decoration-line: none; color: rgb(80, 168, 227);" target="_blank" title="Oppo Watch" type="Oppo Watch">Oppo Watch&nbsp;</a>&nbsp;<a href="https://www.thegioididong.com/dong-ho-thong-minh/oppo-watch-46mm-day-silicone" style="margin: 0px; padding: 0px; text-decoration-line: none; color: rgb(80, 168, 227);" target="_blank" title="Oppo Watch 46 mm đen" type="Oppo Watch 46 mm đen">black version of 46mm</a><font style="margin: 0px; padding: 0px; vertical-align: inherit;"><font style="margin: 0px; padding: 0px; vertical-align: inherit;">&nbsp;using the clock face square, boron slight curve at 4 sides, with glass bo curved 2D lateral depth feels like the curved 3D AMOLED 1.91 inch with resolution of 402 x 476 pixels, pixel density of 326 ppi and wide color range of standard DCI-P3 for sharp, vivid display quality.&nbsp;</font><font style="margin: 0px; padding: 0px; vertical-align: inherit;">&nbsp;Silicone&nbsp;</font></font><a href="https://www.thegioididong.com/day-dong-ho" style="margin: 0px; padding: 0px; text-decoration-line: none; color: rgb(80, 168, 227);" target="_blank" title="strap" type="dây đeo">strap</a><font style="margin: 0px; padding: 0px; vertical-align: inherit;">&nbsp;for a comfortable and comfortable carry feel.</font></h3>rn<p a="" although="" appearance="" apple="" but="" dejavu="" font="" font-size:="" has="" href="https://www.thegioididong.com/tim-kiem?key=oppo+watch" is="" liberation="" oppo="" other="" p="" points="" quite="" similar="" some="" still="" style="margin: 10px 0px; padding: 0px; margin-block: 0px; text-rendering: geometricprecision; color: rgb(51, 51, 51); font-family: Helvetica, Arial, " such="" target="_blank" the="" title="See more Oppo brand smart watch models" to="" type="Xem thêm các mẫu đồng hồ thông minh thương hiệu Oppo">rn	<font style="margin: 0px; padding: 0px; vertical-align: inherit;">- The right edge is where two hard keys are located, in which the home key has more green lines running along.</font></p>rn<p -="" as="" dejavu="" font="" font-size:="" is="" left="" liberation="" p="" play="" side="" speakerphone="" style="margin: 10px 0px; padding: 0px; margin-block: 0px; text-rendering: geometricprecision; color: rgb(51, 51, 51); font-family: Helvetica, Arial, " the="" to="" used="" well="" where="">rn	<font style="margin: 0px; padding: 0px; vertical-align: inherit;">- The back is equipped with sensors to measure heart rate and the&nbsp;</font><a href="https://www.thegioididong.com/dtdd-oppo" style="margin: 0px; padding: 0px; text-decoration-line: none; color: rgb(80, 168, 227);" target="_blank" title="oppo" type="oppo">OPPO</a><font style="margin: 0px; padding: 0px; vertical-align: inherit;"><font style="margin: 0px; padding: 0px; vertical-align: inherit;">&nbsp;brand logo&nbsp;&nbsp;</font><font style="margin: 0px; padding: 0px; vertical-align: inherit;">.</font></font></p>rn<div>rn	&nbsp;</div>rn<p>rn	&nbsp;</p>rn<p>rn	&lt;h3 style=&quot;margin: 30px 0px 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 20px; line-height: 1.3em; font-family: Helvetica, Arial, &quot; dejavu=&quot;&quot; sans&quot;,=&quot;&quot; &quot;liberation=&quot;&quot; freesans,=&quot;&quot; sans-serif;=&quot;&quot; color:=&quot;&quot; rgb(51,=&quot;&quot; 51,=&quot;&quot; 51);=&quot;&quot; outline:=&quot;&quot; none;=&quot;&quot; zoom:=&quot;&quot; 1;=&quot;&quot; overflow:=&quot;&quot; hidden;&quot;=&quot;&quot;&gt; &nbsp;</p>rn<p>rn	&nbsp;</p>rn', '2021-05-05 08:10:11', 852, 'watch3.jpg', 'C03'),
 ('W04', 'Huawei Watch Fit', 220, 300, 'Operating system: watchOS 7.0', '<h3 according="" change="" color:="" dejavu="" easily="" face="" font-size:="" liberation="" outfit="" outline:="" overflow:="" p="" strong="" style="margin: 10px 0px; padding: 0px; margin-block: 0px; text-rendering: geometricprecision; color: rgb(51, 51, 51); font-family: Helvetica, Arial, " the="" to="" watch="" zoom:="">rn	<font style="margin: 0px; padding: 0px; vertical-align: inherit;"><font style="margin: 0px; padding: 0px; vertical-align: inherit;">Besides the unique watch faces available from Huawei, you can also choose freely from the Watch Face Store or create your own from your personal photo gallery.&nbsp;</font><font style="margin: 0px; padding: 0px; vertical-align: inherit;">In addition, Huawei Watch Fit supports changing watch face themes to match your everyday outfit.</font></font> &lt;p style=&quot;margin: 10px 0px; padding: 0px; margin-block: 0px; text-rendering: geometricprecision; color: rgb(51, 51, 51); font-family: Helvetica, Arial, &quot; dejavu=&quot;&quot; sans&quot;,=&quot;&quot; &quot;liberation=&quot;&quot; freesans,=&quot;&quot; sans-serif;=&quot;&quot; font-size:=&quot;&quot; 16px;&quot;=&quot;&quot;&gt; <font style="margin: 0px; padding: 0px; vertical-align: inherit;">You can prioritize displaying the information you care about most such as heart rate, distance, battery life, weather ... on the main watch face.</font></h3>rn', '2021-05-05 08:10:17', 400, 'watch4.jpg', 'C03');
 
+
+CREATE TABLE orders (
+  OrderID BIGSERIAL NOT NULL,
+  OrderDate timestamp(0) NOT NULL,
+  DeliveryDate timestamp(0) NOT NULL,
+  Delivery_loca varchar(200) NOT NULL,
+  Username varchar(20) NOT NULL,
+  PRIMARY KEY (OrderID),
+	FOREIGN KEY (Username) REFERENCES customer (Username)
+) ;
+
+CREATE TABLE orderdetail (
+  OrderID int NOT NULL,
+  Product_ID varchar(10) NOT NULL,
+  price bigint NOT NULL,
+  qty int NOT NULL,
+  unitprice bigint NOT NULL,
+	PRIMARY KEY (OrderID,Product_ID),
+	FOREIGN KEY (OrderID) REFERENCES orders (OrderID),
+	FOREIGN KEY (Product_ID) REFERENCES product (Product_ID)
+) ;
 
