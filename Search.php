@@ -34,7 +34,7 @@
                     href="?page=quanly_chitietsanpham&ma=<?php echo  $row['product_id']?>"><?php echo  $row['product_name']?></a>
             </h4>
             <div class="price"><ins>$ <?php echo  $row['price']?></ins> <del class="oldprice">
-                    $<?php echo  $row['oldPrice']?></del></div>
+                    $<?php echo  $row['oldprice']?></del></div>
             <p><button><a href="?page=cartfuntion&ma=<?php echo  $row['product_id']?>">Add to Cart</a></button></p>
         </div>
     </div>

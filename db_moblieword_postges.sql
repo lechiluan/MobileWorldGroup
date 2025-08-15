@@ -60,7 +60,7 @@ CREATE TABLE product (
   Product_ID varchar(10) NOT NULL,
   Product_Name varchar(30) NOT NULL,
   Price bigint NOT NULL,
-  oldPrice bigint NOT NULL,
+  oldPrice bigint NULL,
   SmallDesc varchar(1000) NOT NULL,
   DetailDesc text NOT NULL,
   ProDate timestamp(0) NOT NULL,

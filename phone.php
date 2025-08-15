@@ -16,7 +16,7 @@
         <div class="card">
             <img src="product-imgs/<?php echo $row['pro_image']?>" style="width:100%">
             <h4 class="name"><a
-                    href="?page=productdetail&ma=<?php echo  $row['product_ID']?>"><?php echo  $row['product_name']?></a>
+                    href="?page=productdetail&ma=<?php echo  $row['product_id']?>"><?php echo  $row['product_name']?></a>
             </h4>
             <div class="price"><ins>$<?php echo  $row['price']?></ins> <del class="oldprice">
                     $<?php echo  $row['oldprice']?></del></div>
