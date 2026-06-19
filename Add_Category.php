@@ -25,14 +25,14 @@
 			}
 			else
 			{
-				$id =htmlspecialchars(pg_escape_string($conn,$id));
-				$name =htmlspecialchars(pg_escape_string($conn,$name));
-				$des =htmlspecialchars(pg_escape_string($conn,$des));
+				$id =htmlspecialchars(mysqli_real_escape_string($conn,$id));
+				$name =htmlspecialchars(mysqli_real_escape_string($conn,$name));
+				$des =htmlspecialchars(mysqli_real_escape_string($conn,$des));
 				$sq="SELECT * FROM category where cat_id='$id' or cat_name='$name'";
-				$result = pg_query($conn,$sq);
-				if(pg_num_rows($result)==0)
+				$result = mysqli_query($conn,$sq);
+				if(mysqli_num_rows($result)==0)
 				{
-					pg_query($conn, "INSERT INTO category (cat_id, cat_name, cat_des) VALUES ('$id','$name','$des')");
+					mysqli_query($conn, "INSERT INTO category (cat_id, cat_name, cat_des) VALUES ('$id','$name','$des')");
 					echo '<meta http-equiv="Refresh" content="0; URL=?page=category_management"/>';
 				}
 				else

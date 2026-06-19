@@ -25,11 +25,11 @@ function deleteConfirm() {
             if(isset($_GET["id"])){
                 $id = $_GET["id"];
                 $sq = "SELECT pro_image from product WHERE product_id='$id'";
-                $res = pg_query($conn,$sq);
-                $row = pg_fetch_array($res, Null, PGSQL_ASSOC);
+                $res = mysqli_query($conn,$sq);
+                $row = db_fetch_assoc($res);
                 $filePic = $row['pro_image'];
                 unlink("product-imgs/".$filePic);
-                pg_query($conn,"DELETE FROM product WHERE product_id='$id'");
+                mysqli_query($conn,"DELETE FROM product WHERE product_id='$id'");
             }
         }
     ?>
@@ -57,12 +57,12 @@ function deleteConfirm() {
             <?php
                 include_once("connection.php");
 				$No=1;
-                $result= pg_query($conn,"SELECT product_id, product_name, price, pro_qty, pro_image, cat_name
+                $result= mysqli_query($conn,"SELECT product_id, product_name, price, pro_qty, pro_image, cat_name
                 FROM product a, category b
                 Where a.cat_id = b.cat_id 
                 ORDER BY prodate DESC");
 
-                while($row=pg_fetch_array($result,Null,PGSQL_ASSOC))
+                while($row=db_fetch_assoc($result))
                 {
 			?>
             <tr>

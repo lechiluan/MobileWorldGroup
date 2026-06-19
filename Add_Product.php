@@ -5,11 +5,11 @@
 	include_once("connection.php");
 	Function bind_Category_List($conn){
 		$sqlstring="SELECT cat_id, cat_name FROM category";
-		$result = pg_query($conn, $sqlstring);
+		$result = mysqli_query($conn, $sqlstring);
 
 		echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Chose category</option>";
-		while ($row = pg_fetch_array($result, Null, PGSQL_ASSOC)){
+		while ($row = db_fetch_assoc($result)){
 			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
 		}
 		echo "</select>";
@@ -57,14 +57,14 @@
 				if($pic['size']<= 614400)
 				{
 					$sq="SELECT * FROM product WHERE product_id='$id' or product_name='$proname'";
-					$result= pg_query($conn,$sq);
-					if(pg_num_rows($result)==0)
+					$result= mysqli_query($conn,$sq);
+					if(mysqli_num_rows($result)==0)
 					{
 						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
 						$filePic = $pic['name'];
 						$sqlstring="INSERT INTO product (product_id, product_name, price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
 						VALUES ('$id','$proname',$price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-						pg_query($conn,$sqlstring) or die(pg_errormessage($conn));
+						mysqli_query($conn,$sqlstring) or die(mysqli_error($conn));
 
 						echo '<meta http-equiv="Refresh" content="0; URL=?page=product_management"/>';
 					}

@@ -10,11 +10,11 @@
 	include_once("connection.php");
 	if(isset($_GET['ma'])){
 		$id=$_GET['ma'];
-		$result = pg_query($conn, "SELECT * FROM product Where product_id='$id'");
+		$result = mysqli_query($conn, "SELECT * FROM product Where product_id='$id'");
 		if (!$result) { //add this check.
- 			die('Invalid query: ' . pg_errormessage($conn));
+ 			die('Invalid query: ' . mysqli_error($conn));
 		}
- 		while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+ 		while($row = db_fetch_assoc($result)){
  	?>
     <form method="GET" action="cartfuntion.php">
         <div class="col-sm-5">

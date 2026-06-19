@@ -3,8 +3,8 @@
 $query = "SELECT custname, address, email, telephone
 FROM customer
 where username='".$_SESSION["us"]."'";
-$result= pg_query($conn,$query) or die(pg_errormessage($conn));
-$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$result= mysqli_query($conn,$query) or die(mysqli_error($conn));
+$row = db_fetch_assoc($result);
 $us=$_SESSION["us"];
 $email=$row["email"];
 $fullname=$row["custname"];
@@ -26,14 +26,14 @@ if(isset($_POST["btnUpdate"])){
 			$sq="UPDATE customer SET custName='$fullname',address='$address',telephone='$telephone',
 			password ='$pass'
 			WHERE username = '".$_SESSION['us']."'";
-			pg_query($conn,$sq) or die(pg_errormessage($conn));
+			mysqli_query($conn,$sq) or die(mysqli_error($conn));
             echo "<script>alert('Update Profile Successfully')</script>";
             echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 		}
 		else{
 			$sq="UPDATE customer SET custname='$fullname',address='$address',telephone='$telephone'
 			WHERE username = '".$_SESSION['us']."'";
-			pg_query($conn,$sq) or die(pg_errormessage($conn));
+			mysqli_query($conn,$sq) or die(mysqli_error($conn));
             echo "<script>alert('Update Profile Successfully')</script>";
             echo '<meta http-equiv="refresh" content="0;URL=index.php">';
 		}

@@ -24,7 +24,7 @@
         $us=$_SESSION['us'];
         $email=$_POST['txtEmail'];
         $mess=$_POST['txtMessage'];
-        pg_query($conn,"INSERT INTO feedback (username, email, message) VALUES ('$us','$email','$mess')");
+        mysqli_query($conn,"INSERT INTO feedback (username, email, message) VALUES ('$us','$email','$mess')");
         echo "<script>alert('Thank you for sending us feedback. We will get back to you as soon as possible!');</script>";
         echo "<script>window.location='index.php';</script>";
 	    } 

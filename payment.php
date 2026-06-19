@@ -13,14 +13,8 @@
 
         $query = "INSERT INTO orders (orderdate, deliverydate, delivery_loca, username)
 				  VALUES ('".date('Y-m-d H:i:s')."', '".$deliverydate."', '".$deliveryaddress."','".$_SESSION['us']."')";
-		pg_query($conn, $query) or die(pg_errormessage($conn));
-        $result = pg_query($conn,"SELECT LASTVAL()") or die(pg_errormessage($conn));
-
-        while ($row = pg_fetch_row($result)) {
-            $Orid = $row[0];
-        }
-
-        // mysql_insert_id($conn);
+		mysqli_query($conn, $query) or die(mysqli_error($conn));
+        $Orid = mysqli_insert_id($conn);
 		foreach ($_SESSION["cart"] as $key => $row) {
             $a=$row['price'];
             $b=$row['quantity'];
@@ -28,11 +22,11 @@
 
 		    $queryadd = "INSERT INTO orderdetail (orderid , product_id, price, qty, unitprice)
 				VALUES ('$Orid','$key',".$row['price'].", ".$row['quantity'].",'$total')";
-		    pg_query($conn, $queryadd) or die(pg_errormessage($conn));
+		    mysqli_query($conn, $queryadd) or die(mysqli_error($conn));
             
             $quantity1=$row['quantity'];
 		    $queryupdateprice = "UPDATE product SET pro_qty = pro_qty-$quantity1 WHERE product_id='$key'";
-		    pg_query($conn, $queryupdateprice) or die(pg_errormessage($conn));
+		    mysqli_query($conn, $queryupdateprice) or die(mysqli_error($conn));
         }
 		unset($_SESSION["cart"]);
 		echo "<script>alert('Your order has been acknowledged, we will confirm the payment with you soon!');</script>";

@@ -66,11 +66,11 @@
 <div class="container">
     <?php
 		include_once("connection.php");
-		$result = pg_query($conn, "SELECT * FROM product Where product_id='P01'");
+		$result = mysqli_query($conn, "SELECT * FROM product Where product_id='P01'");
     	if (!$result) { //add this check.
-        die('Invalid query: ' . pg_errormessage($conn));
+        die('Invalid query: ' . mysqli_error($conn));
         }
-		while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+		while($row = db_fetch_assoc($result)){
 	?>
     <!--Display product-->
     <div class="col-sm-3">
@@ -89,34 +89,11 @@
 				?>
     <?php
 		include_once("connection.php");
-		$result = pg_query($conn, "SELECT * FROM product Where product_id='P02'");
+		$result = mysqli_query($conn, "SELECT * FROM product Where product_id='P02'");
     	if (!$result) { //add this check.
-        die('Invalid query: ' . pg_errormessage($conn));
+        die('Invalid query: ' . mysqli_error($conn));
         }
-		while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
-	?>
-    <!--Display product-->
-    <div class="col-sm-3">
-        <div class="card">
-            <img src="product-imgs/<?php echo $row['pro_image']?>" style="width:100%">
-            <h4 class="name"><a
-                    href="?page=productdetail&ma=<?php echo  $row['product_id']?>"><?php echo  $row['product_name']?></a>
-            </h4>
-            <div class="price"><ins>$<?php echo  $row['price']?></ins> <del class="oldprice">
-                    $<?php echo  $row['oldprice']?></del></div>
-            <p><button><a href="cartfuntion.php?ma=<?php echo  $row['product_id']?>">Add to Cart</a></button></p>
-        </div>
-    </div>
-    <?php
-				}
-				?>
-        <?php
-		include_once("connection.php");
-		$result = pg_query($conn, "SELECT * FROM product Where product_id='T01'");
-    	if (!$result) { //add this check.
-        die('Invalid query: ' . pg_errormessage($conn));
-        }
-		while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+		while($row = db_fetch_assoc($result)){
 	?>
     <!--Display product-->
     <div class="col-sm-3">
@@ -135,11 +112,34 @@
 				?>
         <?php
 		include_once("connection.php");
-		$result = pg_query($conn, "SELECT * FROM product Where product_id='W01'");
+		$result = mysqli_query($conn, "SELECT * FROM product Where product_id='T01'");
     	if (!$result) { //add this check.
-        die('Invalid query: ' . pg_errormessage($conn));
+        die('Invalid query: ' . mysqli_error($conn));
         }
-		while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+		while($row = db_fetch_assoc($result)){
+	?>
+    <!--Display product-->
+    <div class="col-sm-3">
+        <div class="card">
+            <img src="product-imgs/<?php echo $row['pro_image']?>" style="width:100%">
+            <h4 class="name"><a
+                    href="?page=productdetail&ma=<?php echo  $row['product_id']?>"><?php echo  $row['product_name']?></a>
+            </h4>
+            <div class="price"><ins>$<?php echo  $row['price']?></ins> <del class="oldprice">
+                    $<?php echo  $row['oldprice']?></del></div>
+            <p><button><a href="cartfuntion.php?ma=<?php echo  $row['product_id']?>">Add to Cart</a></button></p>
+        </div>
+    </div>
+    <?php
+				}
+				?>
+        <?php
+		include_once("connection.php");
+		$result = mysqli_query($conn, "SELECT * FROM product Where product_id='W01'");
+    	if (!$result) { //add this check.
+        die('Invalid query: ' . mysqli_error($conn));
+        }
+		while($row = db_fetch_assoc($result)){
 	?>
     <!--Display product-->
     <div class="col-sm-3">

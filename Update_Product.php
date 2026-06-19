@@ -5,11 +5,11 @@
 	include_once("connection.php");
 	Function bind_Category_List($conn,$selectedValue){
 		$sqlstring="SELECT cat_id, cat_name FROM category";
-		$result = pg_query($conn, $sqlstring);
+		$result = mysqli_query($conn, $sqlstring);
 
 		echo "<select name='CategoryList' class='form-control'>
 			<option value='0'>Chose category</option>";
-			while ($row = pg_fetch_array($result,Null, PGSQL_ASSOC)){
+			while ($row = db_fetch_assoc($result)){
 				if($row['cat_id'] == $selectedValue)
 				{
 					echo "<option value='".$row['cat_id']."' selected>".$row['cat_name']."</option>";
@@ -27,8 +27,8 @@
 		$sqlstring = "SELECT product_name, price, oldprice, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id
 		FROM product WHERE product_id = '$id' ";
 
-		$result = pg_query($conn, $sqlstring);
-		$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+		$result = mysqli_query($conn, $sqlstring);
+		$row = db_fetch_assoc($result);
 		$proname =$row['product_name'];
 		$short = $row['smalldesc'];
 		$detail=$row['detaildesc'];
@@ -201,8 +201,8 @@
 					if($pic['size']<= 614400)
 					{
 						$sq="SELECT * FROM product WHERE product_id != '$id' and product_name='$proname'";
-						$result=pg_query($conn,$sq);
-						if(pg_num_rows($result)==0)
+						$result=mysqli_query($conn,$sq);
+						if(mysqli_num_rows($result)==0)
 						{
 						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
 						$filePic = $pic['name'];
@@ -210,7 +210,7 @@
 						$sqlstring="UPDATE product SET product_name='$proname', price=$price, oldprice='$oldprice', smalldesc='$short',
 						detaildesc='$detail', pro_qty=$qty, pro_image='$filePic',cat_id='$category',
 						prodate='".date('Y-m-d H:i:s')."' WHERE product_id='$id'";
-						pg_query($conn,$sqlstring);
+						mysqli_query($conn,$sqlstring);
 						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 						}
 						else 
@@ -231,13 +231,13 @@
 			else
 			{
 				$sq="SELECT * FROM product where product_id != '$id' and product_name='$proname'";
-				$result= pg_query($conn,$sq);
-				if(pg_num_rows($result)==0)
+				$result= mysqli_query($conn,$sq);
+				if(mysqli_num_rows($result)==0)
 				{
 					$sqlstring="UPDATE product SET product_name='$proname',
 					price=$price, oldprice='$oldprice',smalldesc='$short',detaildesc='$detail',pro_qty=$qty,
 					cat_id='$category',prodate='".date('Y-m-d H:i:s')."' WHERE product_id='$id'";
-					pg_query($conn,$sqlstring);
+					mysqli_query($conn,$sqlstring);
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 				}
 				else 

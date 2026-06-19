@@ -26,8 +26,8 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query($conn,"SELECT * FROM feedback");
-                while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC))
+                $result = mysqli_query($conn,"SELECT * FROM feedback");
+                while($row = db_fetch_assoc($result))
                 { 
             ?>
             <tr>

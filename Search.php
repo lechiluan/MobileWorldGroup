@@ -13,18 +13,18 @@
                                               echo '<meta http-equiv="refresh" content="0;URL=index.php">';
                                             }
                                            else {
-		  				   	        $result = pg_query($conn, "SELECT * FROM product where product_id like '%".$data."%' or product_name like '%".$data."%'");
-    			                if(pg_num_rows($result)==0)
+		  				   	        $result = mysqli_query($conn, "SELECT * FROM product where product_id like '%".$data."%' or product_name like '%".$data."%'");
+    			                if(mysqli_num_rows($result)==0)
                           {
                             echo  "<script>alert('No find data. Please Enter Again!')</script>";
                             echo '<meta http-equiv="refresh" content="0;URL=index.php">';
                           }
                           else {
                            if (!$result) { //add this check.
-                                die('Invalid query: ' . pg_errormessage($conn));
+                                die('Invalid query: ' . mysqli_error($conn));
                             }
                             else {
-			                    while($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)){
+			                    while($row = db_fetch_assoc($result)){
 				                  ?>
     <!--Display product-->
     <div class="col-sm-3">

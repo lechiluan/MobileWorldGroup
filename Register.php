@@ -60,13 +60,13 @@
         include_once("connection.php");
         $pass= md5($pass1);
         $sq = "SELECT * FROM customer WHERE username='$us' or email='$email'";
-        $res = pg_query($conn,$sq);
-        if(pg_num_rows($res)==0)
+        $res = mysqli_query($conn,$sq);
+        if(mysqli_num_rows($res)==0)
         {
-            pg_query($conn,"INSERT INTO customer(username, password, custname, 
+            mysqli_query($conn,"INSERT INTO customer(username, password, custname, 
             gender, address, telephone, email, cusdate, cusmonth, cusyear, ssn, activecode, state)
             VALUES ('$us','$pass','$fullname',$sex,'$addrress','$tel','$email',
-            $date, $month, $year,'','',0)") or die(pg_errormessage($conn));
+            $date, $month, $year,'','',0)") or die(mysqli_error($conn));
             echo '<meta http-equiv="refresh" content="0;URL=?page=login"/>';
         }
         else

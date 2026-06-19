@@ -31,11 +31,11 @@
         <tbody>
             <?php
                 include_once("connection.php");
-                $result = pg_query($conn,"SELECT a.orderid, orderdate, deliverydate, delivery_loca, username,
+                $result = mysqli_query($conn,"SELECT a.orderid, orderdate, deliverydate, delivery_loca, username,
                 c.product_id, pro_image, b.price, qty, unitprice
                 From orders as a, orderdetail as b, product as c
-                Where a.orderid = b.orderid and b.product_id=c.product_id") or die(pg_errormessage($conn));
-                while($row = pg_fetch_array($result,NULL, PGSQL_ASSOC))
+                Where a.orderid = b.orderid and b.product_id=c.product_id") or die(mysqli_error($conn));
+                while($row = db_fetch_assoc($result))
                 { 
             ?>
             <tr>

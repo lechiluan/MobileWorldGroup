@@ -27,7 +27,7 @@ function deleteConfirm() {
         {
             if(isset($_GET["id"])){
                 $id= $_GET['id'];
-                pg_query($conn,"DELETE FROM category WHERE Cat_ID='$id'");
+                mysqli_query($conn,"DELETE FROM category WHERE Cat_ID='$id'");
             }
             
         }
@@ -51,8 +51,8 @@ function deleteConfirm() {
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query($conn,"SELECT * FROM category");
-                while($row = pg_fetch_array($result,Null, PGSQL_ASSOC))
+                $result = mysqli_query($conn,"SELECT * FROM category");
+                while($row = db_fetch_assoc($result))
                 { 
             ?>
             <tr>

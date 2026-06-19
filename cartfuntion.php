@@ -32,11 +32,11 @@ else
             $quantity=1;
         }
 
-        $result = pg_query($conn,"SELECT * FROM product where product_id='$id'");
+        $result = mysqli_query($conn,"SELECT * FROM product where product_id='$id'");
     
     if($result)
     {
-        $product = pg_fetch_assoc($result);
+        $product = db_fetch_assoc($result);
     }
 
     $item = [

@@ -26,8 +26,8 @@
         <tbody>
             <?php
                 include_once("connection.php");
-                $result = pg_query($conn,"SELECT orderid, orderdate, deliverydate, delivery_loca, username FROM orders") or die(pg_errormessage($conn));
-                while($row = pg_fetch_array($result, NUll, PGSQL_ASSOC))
+                $result = mysqli_query($conn,"SELECT orderid, orderdate, deliverydate, delivery_loca, username FROM orders") or die(mysqli_error($conn));
+                while($row = db_fetch_assoc($result))
                 { 
             ?>
             <tr>

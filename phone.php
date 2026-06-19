@@ -4,12 +4,12 @@
 <div class="container">
     <?php
 		include_once("connection.php");
-		$result = pg_query($conn, "SELECT * FROM product Where Cat_ID='C01'");
+		$result = mysqli_query($conn, "SELECT * FROM product Where Cat_ID='C01'");
 
     	if (!$result) { //add this check.
-        die('Invalid query: '.pg_errormessage($conn));
+        die('Invalid query: '.mysqli_error($conn));
         }
-	    while($row = pg_fetch_array($result, NUll, PGSQL_ASSOC)){
+	    while($row = db_fetch_assoc($result)){
 	?>
     <!--Display product-->
     <div class="col-sm-3">
